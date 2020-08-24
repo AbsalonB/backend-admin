@@ -14,8 +14,12 @@ app.use(express.json());
 dbConnection();
 
 //rutas 
-app.use('/api/users', require('./routes/users-route'))
-app.use('/api/login', require('./routes/auth-route'))
+app.use('/api/users', require('./routes/users-route'));
+app.use('/api/login', require('./routes/auth-route'));
+app.use('/api/hospitals', require('./routes/hospitals-route'));
+app.use('/api/doctors', require('./routes/doctors-route'));
+app.use('/api/todo', require('./routes/search-route'));
+app.use('/api/upload', require('./routes/uploads-route'));
 
 app.listen(3000,()=>{
     console.log('Servidor corriendo en el puerto '+3000)
