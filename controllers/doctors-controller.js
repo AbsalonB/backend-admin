@@ -65,7 +65,7 @@ const updateDoctor = async (req,res=response)=>{
 }
 
 
-const deleteDoctor = (req,res=response)=>{
+const deleteDoctor = async (req,res=response)=>{
     const id = req.params.id; 
     try {
 
