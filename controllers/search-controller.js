@@ -25,7 +25,8 @@ const getCollection = async (req,res=response)=>{
     const search=req.params.search;
     const table=req.params.table;
     let data = [];
-
+    const regex = new RegExp(search, 'i'); 
+    
     switch (table) {
         case 'doctors':
             data = await Doctor.find({name:regex});
@@ -47,8 +48,7 @@ const getCollection = async (req,res=response)=>{
                 ok:true,
                 result:data
             });
-    }
-    const regex = new RegExp(search, 'i'); 
+    } 
 
     [users,doctors,hospital] = await Promise.all([
         User.find({name:regex}),
