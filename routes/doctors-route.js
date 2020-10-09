@@ -1,12 +1,14 @@
 const {Router}=require('express');  
-const { getDoctors,createDoctor,updateDoctor,deleteDoctor } = require('../controllers/doctors-controller');
+const { getDoctors,createDoctor,updateDoctor,deleteDoctor, getDoctorsById } = require('../controllers/doctors-controller');
 const { validateJWT } = require('../middlewares/validate-jwt');
 const {validateFields} = require('../middlewares/validate-fields');
 const { check } = require('express-validator');
 
 const router=Router();
 
-router.get('/',getDoctors);
+router.get('/', validateJWT, getDoctors);
+
+router.get('/:id', validateJWT, getDoctorsById);
 
 router.post('/',[
     validateJWT,
@@ -21,6 +23,7 @@ router.put('/:id',[
     check('hospital','El nombre del hospital es requerido').isMongoId()
 ],updateDoctor);
 
-router.delete('/:id', deleteDoctor);
+router.delete('/:id', validateJWT, deleteDoctor);
+
 
 module.exports=router;
