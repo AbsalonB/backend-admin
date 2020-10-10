@@ -8,7 +8,6 @@ const router=Router();
 
 router.get('/', validateJWT, getDoctors);
 
-router.get('/:id', validateJWT, getDoctorsById);
 
 router.post('/',[
     validateJWT,
@@ -25,5 +24,6 @@ router.put('/:id',[
 
 router.delete('/:id', validateJWT, deleteDoctor);
 
+router.get('/:id', validateJWT, getDoctorsById);
 
 module.exports=router;
